@@ -1,4 +1,4 @@
-# Tdarr with Full Hardware Acceleration Latest Handbrake 1.10.1 and FFmpeg 8.0 Dolby Vision and HDR10(+) and OCR tools 
+# Tdarr with Full Hardware Acceleration Latest Handbrake 1.10.2 and FFmpeg 8.0 Dolby Vision and HDR10(+) and OCR tools 
 
 > **🚀 Coming Soon - GitHub Repository!**  
 > A dedicated GitHub repository with pre-designed workflows, custom plugins, and comprehensive documentation is currently in development and will be available very soon! This will include ready-to-use Tdarr flows for common scenarios and advanced custom plugins to supercharge your media processing. Stay tuned for the link announcement! 📦✨
