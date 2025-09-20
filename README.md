@@ -234,18 +234,6 @@ docker exec -it tdarr-container /usr/local/bin/check-hw-sw.sh
 - **Health Check**: `http://localhost:8265/api/v2/status`
 - **Prometheus Metrics**: `http://localhost:9090/metrics` *(if exporter enabled)*
 
-## ☕ Support This Project
-
-If this Docker image has saved you time, enhanced your media processing workflow, or you simply appreciate the effort put into building and maintaining it, consider buying me a coffee! 
-
-Your support helps motivate continued development and keeps this project alive in my personal time.
-
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/denixbug)
-
-**Every cup of coffee is greatly appreciated!** ☕✨
-
-*Remember: This is entirely voluntary and comes with no expectations or additional support obligations.*
-
 ## 🎬 Optimized for Tdarr Plugins
 
 This image is specifically optimized for creating and maintaining **Tdarr Plugins** with:
@@ -338,6 +326,19 @@ Perfect for developers working on Tdarr plugins in JavaScript/TypeScript or Pyth
 ### **Permission issues**
 - All files created with 777 permissions by default
 - Run hardware check: `docker exec container-name /usr/local/bin/check-hw-sw.sh`
+
+## ☕ Support This Project
+
+If this Docker image has saved you time, enhanced your media processing workflow, or you simply appreciate the effort put into building and maintaining it, consider buying me a coffee! 
+
+Your support helps motivate continued development and keeps this project alive in my personal time.
+
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/denixbug)
+
+**Every cup of coffee is greatly appreciated!** ☕✨
+
+*Remember: This is entirely voluntary and comes with no expectations or additional support obligations.*
+
 
 ## 📝 Credits & Licensing
 
