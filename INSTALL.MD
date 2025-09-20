@@ -1,63 +1,79 @@
-# Tdarr Docker Installation
+# Installation Instructions
 
-## Quick Setup
+## Quick Start
 
-Simply point your existing Docker setup to this image:
+Pull the image:
 ```bash
 docker pull denix811/tdarr-denix
 ```
 
-## Use With Your Existing Setup
+## Integrate with Your Existing Setup
 
-**Docker Compose:** Change the image line in your compose file to:
+### If you already have Tdarr running:
+
+**Docker Compose:** Update your `docker-compose.yml`:
 ```yaml
-image: denix811/tdarr-denix
+services:
+  tdarr:
+    image: denix811/tdarr-denix  # Change this line
+    # Keep all your existing volumes, ports, etc.
+    environment:
+      - TDARR_MODE=both          # Add this
+      - GPU_VENDOR=intel         # Add this (intel/nvidia/amd/none)
+      # Keep your existing environment variables
 ```
 
-**Unraid Template:** Set Repository to:
-```
-denix811/tdarr-denix
-```
+**Unraid:** In your Tdarr template:
+1. Change Repository to: `denix811/tdarr-denix`
+2. Add required variables:
+   - `TDARR_MODE` = `both` (or `server`/`node`)
+   - `GPU_VENDOR` = `intel` (or `nvidia`/`amd`/`none`)
 
-**Docker Run:** Replace your existing image with:
+**Docker Run:** Replace your image name with `denix811/tdarr-denix` and add:
 ```bash
-denix811/tdarr-denix
+-e TDARR_MODE=both \
+-e GPU_VENDOR=intel \
+# Keep all your existing -v, -p, and other flags
 ```
 
-## Required Variables to Add
+## Hardware Acceleration Setup
 
-Add these environment variables to your existing setup:
-
-- `TDARR_MODE=server|node|both` (must be set)
-- `GPU_VENDOR=intel|nvidia|amd|none` (must be set)
-
-## Hardware Access to Add
-
-**For Intel/AMD GPU users:** Add device mapping:
-```
+**Intel/AMD GPU users:** Add this to your existing setup:
+```bash
 --device=/dev/dri:/dev/dri
 ```
 
-**For NVIDIA GPU users:** Add runtime or GPU access:
-```
+**NVIDIA GPU users:** Add this to your existing setup:
+```bash
 --runtime=nvidia
 ```
-or
-```
+*or*
+```bash
 --gpus all
 ```
 
-## Optional Features You Can Add
+## Optional Extras You Can Add
 
-**Prometheus Monitoring:**
-- Environment: `ENABLE_TDARR_EXPORTER=true`
-- Port: `9090:9090`
+### Prometheus Monitoring
+```bash
+-e ENABLE_TDARR_EXPORTER=true
+-p 9090:9090
+```
 
-**Python Environment:**
-- Environment: `PYTHON_PERSISTENT_VENV=true` 
-- Volumes: 
-  - `/path/to/pyvenv:/pyvenv`
-  - `/path/to/pypayload:/pypayload`
+### Python Scripting Environment
+```bash
+-e PYTHON_PERSISTENT_VENV=true
+-v /path/to/pyvenv:/pyvenv
+-v /path/to/pypayload:/pypayload
+```
 
-**OCR Support:**
-- Volume: `/path/to/tessdata:/tessdata`
+### OCR Support
+```bash
+-v /path/to/tessdata:/tessdata
+```
+
+## What You Get
+
+This image includes the latest FFmpeg 8.0, HandBrake 1.10.2, full hardware acceleration support, Dolby Vision/HDR10+ tools, and many more features compared to the standard Tdarr image.
+
+Your existing Tdarr configuration, databases, and media libraries will work exactly the same - just with better performance and more codec support.
